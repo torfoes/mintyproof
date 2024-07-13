@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Page = () => {
+
+
     return (
         <div>
-            tap page
-
+            manage
         </div>
     );
 };

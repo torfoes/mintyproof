@@ -3,8 +3,7 @@ import React from 'react';
 const Page = () => {
     return (
         <div>
-            tap page
-
+            register page
         </div>
     );
 };

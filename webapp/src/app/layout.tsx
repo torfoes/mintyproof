@@ -1,33 +1,39 @@
-// This is the root layout component for your Next.js app.
-// Learn more: https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
-import { Inter } from 'next/font/google'
-import { cn } from '@/lib/utils'
-import './globals.css'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { Web3Modal } from '@/context/web3modal'
+import Header from "@/components/Header";
+import { cn } from "@/lib/utils"
 
-const fontHeading = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-heading',
+import { Inter as FontSans } from "next/font/google"
+
+const fontSans = FontSans({
+    subsets: ["latin"],
+    variable: "--font-sans",
 })
+export const metadata: Metadata = {
+    title: "Minty Proof",
+    description: "Secure proof of attendance. Minty fresh proofs, security you can trust.",
+};
 
-const fontBody = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-body',
-})
-
-export default function Layout({ children }) {
-  return (
-      <html lang="en">
-      <body
-          className={cn(
-              'antialiased',
-              fontHeading.variable,
-              fontBody.variable
-          )}
-      >
-      {children}
-      </body>
-      </html>
-  )
+export default function RootLayout({
+                                       children,
+                                   }: Readonly<{
+    children: React.ReactNode;
+}>) {
+    return (
+        <html lang="en">
+        <body
+            className={cn(
+                "min-h-screen bg-background font-sans antialiased",
+                fontSans.variable
+            )}
+        >
+        <Web3Modal>
+            <Header/>
+            {children}
+        </Web3Modal>
+        </body>
+        </html>
+    );
 }
