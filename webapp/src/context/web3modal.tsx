@@ -1,8 +1,13 @@
 'use client'
 
 import { createWeb3Modal, defaultConfig } from '@web3modal/ethers/react'
+import {ReactNode} from "react";
 
 const projectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID
+
+if (!projectId) {
+    throw new Error('Missing WalletConnect project ID')
+}
 
 const mainnet = {
     chainId: 1,
@@ -42,6 +47,10 @@ createWeb3Modal({
     enableOnramp: true // Optional - false as default
 })
 
-export function Web3Modal({ children }) {
-    return children
+type Web3ModalProps = {
+    children: ReactNode;
+};
+
+export function Web3Modal({ children }: Web3ModalProps) {
+    return <>{children}</>;
 }

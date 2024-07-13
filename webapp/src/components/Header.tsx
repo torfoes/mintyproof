@@ -15,6 +15,8 @@ const Header = () => {
     const { open } = useWeb3Modal()
     const { address, isConnected } = useWeb3ModalAccount()
 
+    if (!address) return null;
+
     return (
         <header className="flex items-center justify-between p-4 bg-background">
             <Link href="/" className="flex items-center space-x-2">
@@ -45,8 +47,9 @@ const Header = () => {
     );
 };
 
-function LeafIcon(props) {
-    return (
+type LeafIconProps = React.SVGProps<SVGSVGElement>;
+
+const LeafIcon: React.FC<LeafIconProps> = (props) => {    return (
         <svg
             {...props}
             xmlns="http://www.w3.org/2000/svg"
