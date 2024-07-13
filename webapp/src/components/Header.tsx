@@ -15,8 +15,6 @@ const Header = () => {
     const { open } = useWeb3Modal()
     const { address, isConnected } = useWeb3ModalAccount()
 
-
-
     return (
         <header className="flex items-center justify-between p-4 bg-background">
             <Link href="/" className="flex items-center space-x-2">
@@ -36,7 +34,29 @@ const Header = () => {
                         <DropdownMenuItem onSelect={() => open({ view: 'Account' })}>
                             Account
                         </DropdownMenuItem>
-                        <DropdownMenuItem onSelect={() => open()}>
+
+
+                        <DropdownMenuItem>
+                            <Link href="/manage">Manage</Link>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem>
+                            <Link href="/scan">Scan</Link>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem>
+                            <Link href="/tap">Tap</Link>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem>
+                            <Link href="/servermint">Servermint</Link>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem>
+                            <Link href="/deploy">Deploy</Link>
+                        </DropdownMenuItem>
+
+                        <DropdownMenuItem className={'bg-blend-color black'} onSelect={() => open()}>
                             Disconnect
                         </DropdownMenuItem>
                     </DropdownMenuContent>
