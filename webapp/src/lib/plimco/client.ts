@@ -9,7 +9,9 @@ export const publicClient = createPublicClient({
     transport: http("https://rpc.ankr.com/polygon_mumbai"),
 });
 
-export const pimlicoUrl = "https://api.pimlico.io/2/mumbai/rpc?apikey=3c06f4c3-ffaf-4bd0-87d7-38d6ce058337";
+const PIMLICO_APIKEY = process.env.PIMLICO_APIKEY;
+
+export const pimlicoUrl = `https://api.pimlico.io/2/mumbai/rpc?apikey=${PIMLICO_APIKEY}`;
 
 export const pimlicoClient = createClient({
     transport: http(pimlicoUrl),
