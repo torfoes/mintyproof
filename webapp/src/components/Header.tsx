@@ -15,7 +15,7 @@ const Header = () => {
     const { open } = useWeb3Modal()
     const { address, isConnected } = useWeb3ModalAccount()
 
-    if (!address) return null;
+
 
     return (
         <header className="flex items-center justify-between p-4 bg-background">
@@ -24,12 +24,13 @@ const Header = () => {
                 <span className="text-xl font-bold">Minty Proof</span>
             </Link>
 
-            {isConnected ? (
+            {isConnected && address ? (
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline">
                             {`${address.slice(0, 6)}...${address.slice(-4)}`}
                         </Button>
+
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
                         <DropdownMenuItem onSelect={() => open({ view: 'Account' })}>
