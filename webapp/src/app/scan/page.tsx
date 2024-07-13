@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useState} from 'react';
-import execHaloCmdWeb from "@arx-research/libhalo/api/web.js"
+import {execHaloCmdWeb} from '@arx-research/libhalo/api/web.js';
 
 import {Button} from "@/components/ui/button";
 

@@ -1,4 +1,5 @@
+// src/types/arx-research__libhalo.d.ts
+
 declare module '@arx-research/libhalo/api/web.js' {
-    const execHaloCmdWeb: any;
-    export default execHaloCmdWeb;
+    export function execHaloCmdWeb(...args: any[]): any;
 }
