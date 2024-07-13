@@ -1,39 +1,43 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {execHaloCmdWeb} from '@arx-research/libhalo/api/web.js';
+import { Button } from "@/components/ui/button";
+import { ethers } from "ethers";
+import { useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers/react'
 
-import {Button} from "@/components/ui/button";
-import {ethers} from "ethers";
-import {useWeb3ModalAccount} from "@web3modal/ethers/dist/types/exports/react";
+interface Command {
+    name: string;
+    keyNo: number;
+    message: string;
+}
 
-
-const Page = () => {
+const Page: React.FC = () => {
     const { address, isConnected } = useWeb3ModalAccount()
 
-    const [statusText, setStatusText] = useState('Click on the button');
+    const [statusText, setStatusText] = useState<string>('Click on the button');
 
     const abiCoder = ethers.AbiCoder.defaultAbiCoder();
 
-    function getEthSignedMessageHash(msgSender) {
+    function getEthSignedMessageHash(msgSender: string): string {
         const messageHash = ethers.keccak256(
-            abiCoder.encode(['address', 'uint256'], [msgSender])
+            abiCoder.encode(['address'], [msgSender])
         );
 
         // Create the Ethereum signed message hash
         const prefix = "\x19Ethereum Signed Message:\n32";
         return ethers.keccak256(
-            ethers.concat([ethers.toUtf8Bytes(prefix), messageHash])
+            ethers.concat([ethers.toUtf8Bytes(prefix), ethers.getBytes(messageHash)])
         );
     }
 
     async function scanNFC() {
-        if (!isConnected && !address) {
+        if (!isConnected || !address) {
             setStatusText('Please connect your wallet');
             return;
         }
 
-        let command = {
+        const command: Command = {
             name: "sign",
             keyNo: 1,
             message: getEthSignedMessageHash(address)
@@ -41,7 +45,7 @@ const Page = () => {
 
         console.log('command:', command);
 
-        let res;
+        let res: unknown;
 
         try {
             // --- request NFC command execution ---
@@ -50,7 +54,7 @@ const Page = () => {
             res = await execHaloCmdWeb(command, options);
             // the command has succeeded, display the result to the user
             setStatusText(JSON.stringify(res, null, 4));
-        } catch (e) {
+        } catch (e: any) {
             // the command has failed, display error to the user
             setStatusText('Error: ' + String(e));
         }
