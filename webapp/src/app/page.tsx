@@ -50,9 +50,9 @@ export default function Home() {
                   <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-3 lg:gap-12">
                       <div className="grid gap-1">
                           <div className="inline-block rounded-lg bg-green-100 px-3 py-1 text-sm text-green-800">Step 1</div>
-                          <h3 className="text-xl font-bold text-gray-900">Tap your NFC tag</h3>
+                          <h3 className="text-xl font-bold text-gray-900">Tap a NFC tag</h3>
                           <p className="text-gray-600">
-                              Tap your NFC tag to the device and Minty Proof will capture the signature.
+                              Tap a NFC tag to the device and Minty Proof will capture the signature.
                           </p>
                       </div>
                       <div className="grid gap-1">
