@@ -2,3 +2,4 @@
 .deps/
 .states/
 .DS_Store
+.deploys/
