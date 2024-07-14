@@ -6,17 +6,10 @@ import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import { Label } from "@/components/ui/label"
 
-
-const CONTRACT_CODE = "hellow world code"
-
+import {CONTRACT_CODE} from "@/lib/constants";
 const Page = () => {
 
-    function handleSubmit () {
-        console.log("submit!");
-    }
-
     return (
-
         <div className="flex h-screen p-2">
             <div className="w-1/2 p-6 overflow-y-auto">
                 <Card>
@@ -25,7 +18,7 @@ const Page = () => {
                         <CardDescription>Enter your details to customize the contract</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={}>
                             <div className="grid w-full items-center gap-4">
                                 <div className="flex flex-col space-y-1.5">
                                     <Label htmlFor="name">Collection Name</Label>

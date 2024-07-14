@@ -17,6 +17,14 @@ const mainnet = {
     rpcUrl: 'https://cloudflare-eth.com'
 }
 
+const sepolia = {
+    chainId: 11155111,
+    name: 'Sepolia test network',
+    currency: 'SepoliaETH',
+    explorerUrl: 'https://sepolia.etherscan.io',
+    rpcUrl: 'https://rpc.sepolia.dev'
+}
+
 // 3. Create a metadata object
 const metadata = {
     name: 'Minty Proof',
@@ -41,7 +49,7 @@ const ethersConfig = defaultConfig({
 // 5. Create a Web3Modal instance
 createWeb3Modal({
     ethersConfig,
-    chains: [mainnet],
+    chains: [mainnet, sepolia],
     projectId,
     enableAnalytics: false,
     enableOnramp: true // Optional - false as default
