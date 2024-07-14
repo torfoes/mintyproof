@@ -18,15 +18,13 @@ const Page = () => {
                         <CardDescription>Enter your details to customize the contract</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <form onSubmit={}>
+                        <form>
                             <div className="grid w-full items-center gap-4">
                                 <div className="flex flex-col space-y-1.5">
                                     <Label htmlFor="name">Collection Name</Label>
                                     <Input
                                         id="name"
                                         placeholder="Enter collection name"
-                                    //     value={name}
-                                    //     onChange={(e) => setName(e.target.value)}
                                     />
                                 </div>
                                 <div className="flex flex-col space-y-1.5">
@@ -34,15 +32,13 @@ const Page = () => {
                                     <Input
                                         id="symbol"
                                         placeholder="Enter symbol"
-                                    //     value={symbol}
-                                    //     onChange={(e) => setSymbol(e.target.value)}
                                     />
                                 </div>
                             </div>
                         </form>
                     </CardContent>
                     <CardFooter>
-                        <Button onClick={handleSubmit}>Deploy Contract</Button>
+                        <Button>Deploy Contract</Button>
                     </CardFooter>
                 </Card>
             </div>
@@ -52,9 +48,10 @@ const Page = () => {
                         <CardTitle>Contract Code</CardTitle>
                     </CardHeader>
                     <CardContent>
-            <pre className="text-sm overflow-x-auto">
-              <code>{CONTRACT_CODE}</code>
-            </pre>
+
+                    <pre className="text-sm overflow-x-auto">
+                      <code>{CONTRACT_CODE}</code>
+                    </pre>
                     </CardContent>
                 </Card>
             </div>
